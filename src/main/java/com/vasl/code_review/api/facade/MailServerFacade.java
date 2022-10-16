@@ -23,4 +23,18 @@ public class MailServerFacade {
         return mapper.getOutputModelFromEntity(mailServer);
 
     }
+
+    public void update(MailServerInputModel mailServerInputModel, String id) {
+        MailServer mailServer = mapper.getEntityFromInputModelAndId(mailServerInputModel , id);
+        service.update(mailServer);
+    }
+
+    public void delete(String id) {
+        service.deleteById(id);
+    }
+
+    public MailServerOutputModel get(String id) {
+        MailServer mailServer = service.getById(id);
+        return mapper.getOutputModelFromEntity(mailServer);
+    }
 }

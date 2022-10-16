@@ -12,4 +12,6 @@ public interface MailServerFacadeMapper {
     MailServer getEntityFromInputModel(MailServerInputModel mailServerInputModel);
 
     MailServerOutputModel getOutputModelFromEntity(MailServer mailServer);
+
+    MailServer getEntityFromInputModelAndId(MailServerInputModel mailServerInputModel, String id);
 }
