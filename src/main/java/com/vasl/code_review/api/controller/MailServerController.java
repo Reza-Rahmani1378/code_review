@@ -3,7 +3,7 @@ package com.vasl.code_review.api.controller;
 import com.vasl.code_review.api.dto.MailServerInputModel;
 import com.vasl.code_review.api.dto.MailServerOutputModel;
 import com.vasl.code_review.api.facade.MailServerFacade;
-import io.swagger.annotations.ApiModelProperty;
+import com.vasl.connect.utils.crud.api.model.PageQueryParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
@@ -49,8 +49,14 @@ public class MailServerController {
 
     @GetMapping
     @ApiOperation(value = "get page mail server")
-    public Page<MailServerOutputModel> getMailServersPage() {
-        return null;
+    public Page<MailServerOutputModel> getMailServersPage(PageQueryParams pageQueryParams) {
+        return facade.getPage(pageQueryParams);
+    }
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void activateMailServer(@PathVariable("id") @ApiParam(name = "id" , example = "123456789") String id) {
+        facade.activate(id);
     }
 
 
