@@ -6,4 +6,6 @@ import com.vasl.connect.utils.crud.service.CRUDService;
 public interface MailServerService extends CRUDService<MailServer> {
 
     void activateThisMailServerAndThenDeactivateOthers(String id);
+
+    MailServer getActive();
 }
