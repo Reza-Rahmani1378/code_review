@@ -13,11 +13,12 @@ import java.util.stream.Collectors;
 public class SimpleMailServerService extends SimpleCRUDService<MailServer> implements MailServerService{
 
     private final MailServerRepository repository;
-//    private final MailServerServiceMapper mapper;
+    private final MailServerServiceMapper mapper;
 
-    public SimpleMailServerService(MailServerRepository repository) {
-        super(repository , MailServerServiceMapper.INSTANCE);
+    public SimpleMailServerService(MailServerRepository repository , MailServerServiceMapper mapper) {
+        super(repository , mapper);
         this.repository = repository;
+        this.mapper = mapper;
     }
 
 
