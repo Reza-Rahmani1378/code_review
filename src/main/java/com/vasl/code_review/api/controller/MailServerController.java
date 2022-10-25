@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,14 +23,14 @@ public class MailServerController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "create mail server")
-    public MailServerOutputModel createMailServer(@RequestBody MailServerInputModel mailServerInputModel) {
+    public MailServerOutputModel createMailServer(@RequestBody @Validated MailServerInputModel mailServerInputModel) {
         return facade.create(mailServerInputModel);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ApiOperation(value = "update mail server")
-    public void updateMailServer(@RequestBody MailServerInputModel mailServerInputModel , @PathVariable("id") @ApiParam(name = "id" , example = "1234565") String id) {
+    public void updateMailServer(@RequestBody @Validated MailServerInputModel mailServerInputModel , @PathVariable("id") @ApiParam(name = "id" , example = "1234565") String id) {
         facade.update(mailServerInputModel , id);
     }
 
