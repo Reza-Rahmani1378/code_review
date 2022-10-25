@@ -1,6 +1,7 @@
 package com.vasl.code_review.api.controller;
 
 import com.vasl.code_review.api.dto.SendMailInputModel;
+import com.vasl.code_review.api.dto.SendSmsInputModel;
 import com.vasl.code_review.api.facade.MessagingFacade;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,13 @@ public class MessagingController {
     @ApiOperation(value = "send mail")
     public void sendMail(@RequestBody SendMailInputModel sendMailInputModel) {
         facade.sendMail(sendMailInputModel);
+    }
+
+
+    @PostMapping("/sms")
+    @ApiOperation(value = "send sms")
+    public void sendSms(@RequestBody SendSmsInputModel sendSmsInputModel) {
+        facade.sendSms(sendSmsInputModel);
     }
 
 
